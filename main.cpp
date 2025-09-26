@@ -1,4 +1,5 @@
 #include "playlist.h"
+#include "cancion.h"
 
 int main() {
     Playlist miPlaylist;
