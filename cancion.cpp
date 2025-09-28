@@ -1,3 +1,9 @@
+/*
+* cancion.cpp
+* José Suberbie Pons
+* A01713050
+*/
+
 #include "cancion.h"
 
 // Implementación de métodos de clase Cancion 

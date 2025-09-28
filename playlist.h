@@ -1,3 +1,9 @@
+/*
+* playlist.h
+* José Suberbie Pons
+* A01713050
+*/
+
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 

@@ -1,3 +1,9 @@
+/*
+* main.cpp
+* José Suberbie Pons
+* A01713050
+*/
+
 #include "playlist.h"
 #include "cancion.h"
 

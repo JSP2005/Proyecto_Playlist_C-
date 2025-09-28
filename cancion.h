@@ -1,3 +1,8 @@
+/*
+* cancion.h
+* José Suberbie Pons
+* A01713050
+*/
 #ifndef CANCION_H
 #define CANCION_H
 
