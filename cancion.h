@@ -31,6 +31,7 @@ public:
 
     // Método para mostrar información
     void mostrar();
+    friend ostream& operator<<(ostream& os, const Cancion& c);
 };
 
 #endif

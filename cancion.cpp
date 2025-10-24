@@ -32,3 +32,8 @@ void Cancion::mostrar() {
          << " (" << duracion << " seg, " << genero << ")";
 }
 
+ostream& operator<<(ostream& os, const Cancion& c) {
+    os << c.titulo << " - " << c.artista << " (" << c.duracion << "s, " << c.genero << ")";
+    return os;
+}
+

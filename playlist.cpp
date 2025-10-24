@@ -11,13 +11,13 @@
 
 void Playlist::agregarCancion(Cancion& cancion) {
     canciones.push_back(cancion);
-    cout << "Canción agregada.\n";
+    cout << "Cancion agregada.\n";
 }
 
 void Playlist::mostrarPlaylist() {
     cout << "\n=== Playlist ===\n";
     if (canciones.empty()) {
-        cout << "La playlist esta vacía.\n";
+        cout << "La playlist esta vacia.\n";
     } 
 	else {
         for (int i = 0; i < canciones.size(); i++) {
@@ -39,15 +39,42 @@ void Playlist::ordenarPorTitulo() {
             }
         }
     }
-    cout << "\nPlaylist ordenada por título.\n";
+    cout << "\nPlaylist ordenada por titulo.\n";
 }
 
 void Playlist::eliminarCancion(int indice) {
     if (indice < 1 || indice > canciones.size()) {
-        cout << "Índice inválido.\n";
+        cout << "Indice invalido.\n";
         return;
     }
     canciones.erase(canciones.begin() + (indice - 1));
-    cout << "Canción eliminada.\n";
+    cout << "Cancion eliminada.\n";
 }
 
+// Implementación de métodos para Queue
+
+void Playlist::agregarACola(int indice) {
+    if (indice < 1 || indice > canciones.size()) {
+        cout << "Indice invalido.\n";
+        return;
+    }
+    colaReproduccion.enqueue(canciones[indice - 1]);
+    cout << "Cancion agregada a la cola de reproduccion.\n";
+}
+
+void Playlist::mostrarCola() {
+    cout << "\n--- Cola de Reproduccion ---\n";
+    cout << colaReproduccion.toString() << endl;
+}
+
+void Playlist::reproducirSiguiente() {
+    if (colaReproduccion.empty()) {
+        cout << "No hay canciones en la cola de reproduccion.\n";
+        return;
+    }
+
+    Cancion actual = colaReproduccion.getFront();
+    cout << "\nReproduciendo ahora: " << actual.getTitulo()
+         << " - " << actual.getArtista() << endl;
+    colaReproduccion.dequeue();
+}

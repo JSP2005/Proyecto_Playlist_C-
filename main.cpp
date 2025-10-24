@@ -17,6 +17,9 @@ int main() {
         cout << "2. Mostrar playlist\n";
         cout << "3. Ordenar por titulo\n";
         cout << "4. Eliminar cancion\n";
+        cout << "5. Agregar a cola de reproduccion\n";
+        cout << "6. Mostrar cola de reproduccion\n";
+        cout << "7. Reproducir siguiente cancion\n";
         cout << "0. Salir\n";
         cout << "Elige una opcion: ";
         cin >> opcion;
@@ -54,7 +57,16 @@ int main() {
             cin.ignore();
             miPlaylist.eliminarCancion(indice);
         }
-
+		else if (opcion == 5) {
+            int indice;
+            cout << "Numero de cancion a agregar a la cola: ";
+            cin >> indice;
+            miPlaylist.agregarACola(indice);
+        }
+        else if (opcion == 6)
+            miPlaylist.mostrarCola();
+        else if (opcion == 7)
+            miPlaylist.reproducirSiguiente();
     } while (opcion != 0);
 
     return 0;
