@@ -116,6 +116,8 @@ El programa muestra mensajes en consola confirmando las acciones.
 ---
 ## Análisis de Complejidad
 
+Se define una complejidad final del programa en **O(n²)** al ser la más compleja y proviniendo del **Bubble sort**.
+
 n = número de canciones en el vector principal
 k = número de canciones en la Queue
 m = número de líneas/canciones en el archivo
