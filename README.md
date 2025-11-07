@@ -4,7 +4,7 @@ Es un programa en C++ que permite crear y administrar una playlist de canciones.
 El usuario puede agregar canciones con su información (título, artista, duración y género), mostrar la lista, eliminar canciones y ordenar por título.
 Adicionalmente, el sistema permite gestionar una cola de reproducción (Queue) separada y carga y guarda la lista de canciones desde un archivo de texto "canciones.txt".
 
-Se utiliza programación orientada a objetos con clases (Cancion y Playlist), un arreglo dinámico (vector) para la lista principal, y una estructura de datos de Queue implementada para la cola de reproducción.
+Se utiliza programación orientada a objetos con clases (Cancion y Playlist), un arreglo dinámico (vector) para la lista principal,un algoritmo de ordenamiento "Bubble Sort" para ordenar alfabéticamente, y una estructura de datos de Queue implementada para la cola de reproducción.
 
 ---
 
