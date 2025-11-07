@@ -1,6 +1,6 @@
 /*
 * main.cpp
-* José Suberbie Pons
+* Jose Suberbie Pons
 * A01713050
 */
 
@@ -10,6 +10,8 @@
 int main() {
     Playlist miPlaylist;
     int opcion;
+    string archivoBase = "canciones.txt";
+    miPlaylist.cargarDesdeArchivo(archivoBase);
 
     do {
         cout << "\n--- Menu Playlist ---\n";
@@ -43,12 +45,14 @@ int main() {
 
             Cancion cancion(titulo, artista, duracion, genero);
             miPlaylist.agregarCancion(cancion);
+            miPlaylist.guardarEnArchivo(archivoBase);
         }
         else if (opcion == 2) {
             miPlaylist.mostrarPlaylist();
         }
         else if (opcion == 3) {
             miPlaylist.ordenarPorTitulo();
+            miPlaylist.guardarEnArchivo(archivoBase);
         }
         else if (opcion == 4) {
             int indice;
@@ -56,6 +60,7 @@ int main() {
             cin >> indice;
             cin.ignore();
             miPlaylist.eliminarCancion(indice);
+            miPlaylist.guardarEnArchivo(archivoBase);
         }
 		else if (opcion == 5) {
             int indice;

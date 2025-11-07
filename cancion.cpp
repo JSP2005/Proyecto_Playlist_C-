@@ -1,12 +1,12 @@
 /*
 * cancion.cpp
-* José Suberbie Pons
+* Jose Suberbie Pons
 * A01713050
 */
 
 #include "cancion.h"
 
-// Implementación de métodos de clase Cancion 
+// Implementacion de metodos de clase Cancion 
 
 Cancion::Cancion(string t, string a, int d, string g)
     : titulo(t), artista(a), duracion(d), genero(g) {}

@@ -1,6 +1,6 @@
 /*
 * cancion.h
-* José Suberbie Pons
+* Jose Suberbie Pons
 * A01713050
 */
 #ifndef CANCION_H
@@ -29,7 +29,7 @@ public:
     int getDuracion();
     string getGenero();
 
-    // Método para mostrar información
+    // Metodo para mostrar informacion
     void mostrar();
     friend ostream& operator<<(ostream& os, const Cancion& c);
 };

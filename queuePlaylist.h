@@ -1,6 +1,6 @@
 /*
 * queuePlaylist.h
-* José Suberbie Pons
+* Jose Suberbie Pons
 * A01713050
 */
 #ifndef QUEUEPLAYLIST_H

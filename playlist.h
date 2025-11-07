@@ -1,6 +1,6 @@
 /*
 * playlist.h
-* José Suberbie Pons
+* Jose Suberbie Pons
 * A01713050
 */
 
@@ -18,18 +18,21 @@ class Playlist {
 private:
 	// Vector de canciones "Playlist"
     vector<Cancion> canciones;
-	// Queue para orden de reproducción de canciones
+	// Queue para orden de reproduccion de canciones
 	QueuePlaylist<Cancion> colaReproduccion;
 public:
-	// Métodos para modificar Playlist
+	// Metodos para modificar Playlist
     void agregarCancion(Cancion& cancion);
     void mostrarPlaylist();
     void ordenarPorTitulo();
     void eliminarCancion(int indice);
-    
+    // Metodos para manejar Queue
     void agregarACola(int indice);
     void mostrarCola();
     void reproducirSiguiente();
+    // Metodos para manejo de archivos
+    void cargarDesdeArchivo(const string& nombreArchivo);
+    void guardarEnArchivo(const string& nombreArchivo);
 };
 
 #endif
