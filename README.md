@@ -4,7 +4,7 @@ Es un programa en C++ que permite crear y administrar una playlist de canciones.
 El usuario puede agregar canciones con su información (título, artista, duración y género), mostrar la lista, eliminar canciones y ordenar por título.
 Adicionalmente, el sistema permite gestionar una cola de reproducción (Queue) separada y carga y guarda la lista de canciones desde un archivo de texto "canciones.txt".
 
-Se utiliza programación orientada a objetos con clases (Cancion y Playlist), un arreglo dinámico (vector) para la lista principal,un algoritmo de ordenamiento "Bubble Sort" para ordenar alfabéticamente, y una estructura de datos de Queue implementada para la cola de reproducción.
+Se utiliza programación orientada a objetos con clases (Cancion y Playlist), un arreglo dinámico (vector) para la lista principal, un algoritmo de ordenamiento con Merge Sort para ordenar por título y una estructura de datos de Queue implementada para la cola de reproducción.
 
 ---
 
@@ -20,7 +20,7 @@ Este avance contiene la base del programa:
 * Agregar canciones al vector.
 * Mostrar la lista de canciones numeradas.
 * Eliminar canciones por índice.
-* Ordenar canciones alfabéticamente por título usando Bubble Sort.
+* Ordenar canciones alfabéticamente por título usando Bubble Sort (posteriormente cambiado por Merge Sort).
 * Menú interactivo en consola para seleccionar las acciones.
 
 ---
@@ -116,8 +116,6 @@ El programa muestra mensajes en consola confirmando las acciones.
 ---
 ## Análisis de Complejidad
 
-Se define una complejidad final del programa en **O(n²)** al ser la más compleja y proviniendo del **Bubble sort**.
-
 n = número de canciones en el vector principal
 k = número de canciones en la Queue
 m = número de líneas/canciones en el archivo
@@ -132,18 +130,39 @@ m = número de líneas/canciones en el archivo
 * "operador << " - **O(1)**
 
 ### Clase QueuePlaylist
-* "QueuePlaylist" (Constructor) - **O(1)**
-* "~QueuePlaylist" (Destructor) - **O(k)**
-* "empty" - **O(1)**
-* "enqueue" - **O(1)**
-* "dequeue" - **O(1)**
-* "getFront" - **O(1)**
-* "toString" - **O(k)**
+#### "QueuePlaylist" (Constructor) - **O(1)**
+* Mejor Caso: **O(1)**
+* Caso Intermedio: **O(1)**
+* Peor Caso: **O(1)**
+#### "~QueuePlaylist" (Destructor) - **O(k)**
+* Mejor Caso: **O(k)**
+* Caso Intermedio: **O(k)**
+* Peor Caso: **O(k)**
+#### "empty" - **O(1)**
+* Mejor Caso: **O(1)**
+* Caso Intermedio: **O(1)**
+* Peor Caso: **O(1)**
+#### "enqueue" - **O(1)**
+* Mejor Caso: **O(1)**
+* Caso Intermedio: **O(1)**
+* Peor Caso: **O(1)**
+#### "dequeue" - **O(1)**
+* Mejor Caso: **O(1)**
+* Caso Intermedio: **O(1)**
+* Peor Caso: **O(1)**
+#### "getFront" - **O(1)**
+* Mejor Caso: **O(1)**
+* Caso Intermedio: **O(1)**
+* Peor Caso: **O(1)**
+#### "toString" - **O(k)**
+* Mejor Caso: **O(k)**
+* Caso Intermedio: **O(k)**
+* Peor Caso: **O(k)**
 
 ### Clase Playlist
 * "agregarCancion" - **O(1)** 
 * "mostrarPlaylist" - **O(n)**
-* "ordenarPorTitulo" - **O(n²)** (Bubble Sort)
+* "ordenarPorTitulo" - **O(n log n)** (Merge Sort)
 * "eliminarCancion" - **O(n)**
 * "agregarACola" - **O(1)**
 * "mostrarCola" - **O(k)**
@@ -151,11 +170,25 @@ m = número de líneas/canciones en el archivo
 * "cargarDesdeArchivo" - **O(m)**
 * "guardarEnArchivo" - **O(n)**
 
+### Clase Playlist (Funciones de Merge Sort)
+#### "ordenarPorTitulo" - O(n log n)
+* Mejor Caso: O(n log n)
+* Caso Intermedio: O(n log n)
+* Peor Caso: O(n log n)
+#### "mergeSort" (Función recursiva) - O(k log k)
+* Mejor Caso: O(k log k)
+* Caso Intermedio: O(k log k)
+* Peor Caso: O(k log k)
+#### "merge" (Función de combinación) - O(k)
+* Mejor Caso: O(k)
+* Caso Intermedio: O(k)
+* Peor Caso: O(k)
+
 ### main.cpp (Operaciones del Menú)
 * **Inicio (Carga)** - **O(m)** (Llama a "cargarDesdeArchivo")
 * **Opción 1: Agregar canción** - **O(n)** (Incluye "guardarEnArchivo")
 * **Opción 2: Mostrar playlist** - **O(n)** (Llama a "mostrarPlaylist")
-* **Opción 3: Ordenar por título** - **O(n²)** (Llama a "ordenarPorTitulo"(Bubble Sort))
+* **Opción 3: Ordenar por título** - **O(n log n)** (Llama a "ordenarPorTitulo"(Merge Sort))
 * **Opción 4: Eliminar canción** - **O(n)** (Incluye "eliminarCancion" y "guardarEnArchivo")
 * **Opción 5: Agregar a cola** - **O(1)** (Llama a "agregarACola")
 * **Opción 6: Mostrar cola** - **O(k)** (Llama a "mostrarCola")
@@ -168,7 +201,7 @@ m = número de líneas/canciones en el archivo
 
 **Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.**
 
-Se ha realizado un análisis de complejidad O(n²) para el algoritmo de ordenamiento **Bubble Sort** implementado, como se detalla en la sección "Análisis de Complejidad".
+Se ha realizado un análisis de complejidad O(n log n) para el algoritmo de ordenamiento **Merge Sort** implementado, como se detalla en la sección "Análisis de Complejidad".
 
 **Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.**
 
@@ -178,7 +211,9 @@ Se ha realizado un análisis detallado de la complejidad temporal para todas las
 
 **Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.**
 
-* (Avance 1) Se decidió usar **Bubble Sort** para la funcionalidad de ordenamiento del proyecto. La elección se observa en el método "ordenarPorTitulo()" de la clase "Playlist".
+* (Avance 1) Se decidió usar **Bubble Sort** para la funcionalidad de ordenamiento del proyecto. 
+
+* (Avance 3) Se decidió usar cambiar a **Merge Sort** para mejorar la complejidad del programa, ya que su implementación solo requiere de O(n log n). La elección se observa en el método "ordenarPorTitulo()" de la clase "Playlist".
 
 **Selecciona una estructura de datos adecuada al problema y la usa correctamente.**
 
