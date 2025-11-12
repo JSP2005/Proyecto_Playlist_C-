@@ -20,6 +20,10 @@ private:
     vector<Cancion> canciones;
 	// Queue para orden de reproduccion de canciones
 	QueuePlaylist<Cancion> colaReproduccion;
+
+    void mergeSort(int l, int r);
+    void merge(int l, int m, int r);
+    
 public:
 	// Metodos para modificar Playlist
     void agregarCancion(Cancion& cancion);

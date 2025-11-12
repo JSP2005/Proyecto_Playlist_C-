@@ -31,17 +31,67 @@ void Playlist::mostrarPlaylist() {
     cout << "================\n";
 }
 
-// Implementacion de Bubble sort para ordenar playlist por titulo
+// Implementacion de metodos de ordenamiento (Merge Sort)
 
 void Playlist::ordenarPorTitulo() {
-    for (int i = canciones.size() - 1; i > 0; i--) {       
-        for (int j = 0; j < i; j++) {                      
-            if (canciones[j].getTitulo() > canciones[j + 1].getTitulo()) {
-                swap(canciones[j], canciones[j + 1]);      
-            }
-        }
+    if (canciones.empty()) {
+        cout << "La playlist esta vacia, no hay nada que ordenar.\n";
+        return;
     }
-    cout << "\nPlaylist ordenada por titulo.\n";
+    
+    mergeSort(0, canciones.size() - 1);
+
+    cout << "\nPlaylist ordenada por titulo (usando Merge Sort).\n";
+}
+
+void Playlist::mergeSort(int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+
+        mergeSort(l, m);
+        mergeSort(m + 1, r);
+
+        merge(l, m, r);
+    }
+}
+
+void Playlist::merge(int l, int m, int r) {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    std::vector<Cancion> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++)
+        L[i] = canciones[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = canciones[m + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = l;
+
+    while (i < n1 && j < n2) {
+        if (L[i].getTitulo() <= R[j].getTitulo()) {
+            canciones[k] = L[i];
+            i++;
+        } else {
+            canciones[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        canciones[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        canciones[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
 void Playlist::eliminarCancion(int indice) {
