@@ -4,5 +4,3 @@ Enter Sandman,Metallica,300,Rock
 Still Loving You,Scorpions,280,Rock
 Summer,Calvin Harris,290,Electronica
 The Nights,Avicii,280,Electronica
-
-
