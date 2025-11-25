@@ -1,5 +1,7 @@
 # Proyecto_Playlist_C-
 
+Link de carpeta de drive con videos de los problemas: https://drive.google.com/drive/folders/1ytrmdlkBdY1k_eQ70GZrHpYWOyGa6xMi?hl=es
+
 Es un programa en C++ que permite crear y administrar una playlist de canciones.
 El usuario puede agregar canciones con su información (título, artista, duración y género), mostrar la lista, eliminar canciones y ordenar por título.
 Adicionalmente, el sistema permite gestionar una cola de reproducción (Queue) separada y carga y guarda la lista de canciones desde un archivo de texto "canciones.txt".
@@ -253,4 +255,5 @@ Se ha realizado un análisis detallado de la complejidad temporal para todas las
     5.  Convierte los tipos de datos (string a int) de forma segura.
     6.  Carga los datos en el "std::vector" usando "push_back".
     
+
 * (Avance 4) Igualmente se implementó un nuevo archivo .txt para manejar el registro de la cola de reproducción, de modo que, al igual que la playlist, se mantenga guardado entre ejecuciones del programa.
