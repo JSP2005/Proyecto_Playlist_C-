@@ -6,6 +6,8 @@
 #ifndef QUEUEPLAYLIST_H
 #define QUEUEPLAYLIST_H
 
+#include <fstream>
+#include <string>
 #include <iostream>
 #include <sstream>
 using namespace std;
@@ -33,6 +35,9 @@ public:
     void dequeue();
     T getFront() const;
     string toString() const;
+    void cargarDesdeArchivo(const string& nombreArchivo);
+    void guardarEnArchivo(const string& nombreArchivo);
+
 };
 
 template <class T>
@@ -101,6 +106,58 @@ string QueuePlaylist<T>::toString() const {
     }
 
     return ss.str();
+}
+
+template <typename T>
+void QueuePlaylist<T>::cargarDesdeArchivo(const string& nombreArchivo) {
+    ifstream archivo(nombreArchivo);
+
+    if (!archivo) {
+        cout << "No se pudo abrir el archivo " << nombreArchivo << "\n";
+        return;
+    }
+
+    string linea;
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string titulo, artista, genero;
+        int duracion;
+
+        getline(ss, titulo, ',');
+        getline(ss, artista, ',');
+        ss >> duracion;
+        ss.ignore();
+        getline(ss, genero);
+
+        enqueue(T(titulo, artista, duracion, genero));
+    }
+
+    archivo.close();
+}
+
+template <typename T>
+void QueuePlaylist<T>::guardarEnArchivo(const string& nombreArchivo) {
+    ofstream archivo(nombreArchivo);
+
+    if (!archivo) {
+        cout << "No se pudo abrir el archivo " << nombreArchivo << " para escritura.\n";
+        return;
+    }
+
+    Nodo<T>* actual = front;
+    while (actual != nullptr) {
+        archivo << actual->valor.getTitulo() << ","
+                << actual->valor.getArtista() << ","
+                << actual->valor.getDuracion() << ","
+                << actual->valor.getGenero();
+
+        if (actual->next != nullptr)
+            archivo << "\n";
+
+        actual = actual->next;
+    }
+
+    archivo.close();
 }
 
 #endif

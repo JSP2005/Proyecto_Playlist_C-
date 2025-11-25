@@ -8,10 +8,12 @@
 #include "cancion.h"
 
 int main() {
-    Playlist miPlaylist;
     int opcion;
-    string archivoBase = "canciones.txt";
-    miPlaylist.cargarDesdeArchivo(archivoBase);
+    Playlist miPlaylist;
+    string playlistArchivo = "canciones.txt";
+    miPlaylist.cargarDesdeArchivo(playlistArchivo);
+    string queueArchivo = "queue.txt";
+    miPlaylist.cargarColaDesdeArchivo(queueArchivo);
 
     do {
         cout << "\n--- Menu Playlist ---\n";
@@ -45,33 +47,44 @@ int main() {
 
             Cancion cancion(titulo, artista, duracion, genero);
             miPlaylist.agregarCancion(cancion);
-            miPlaylist.guardarEnArchivo(archivoBase);
+            miPlaylist.guardarEnArchivo(playlistArchivo);
+            miPlaylist.mostrarPlaylist();
         }
         else if (opcion == 2) {
             miPlaylist.mostrarPlaylist();
         }
         else if (opcion == 3) {
             miPlaylist.ordenarPorTitulo();
-            miPlaylist.guardarEnArchivo(archivoBase);
+            miPlaylist.guardarEnArchivo(playlistArchivo);
+            miPlaylist.mostrarPlaylist();
         }
         else if (opcion == 4) {
             int indice;
+            miPlaylist.mostrarPlaylist();
             cout << "Numero de la cancion a eliminar: ";
             cin >> indice;
             cin.ignore();
             miPlaylist.eliminarCancion(indice);
-            miPlaylist.guardarEnArchivo(archivoBase);
+            miPlaylist.guardarEnArchivo(playlistArchivo);
+            miPlaylist.mostrarPlaylist();
         }
 		else if (opcion == 5) {
             int indice;
+            miPlaylist.mostrarPlaylist();
             cout << "Numero de cancion a agregar a la cola: ";
             cin >> indice;
             miPlaylist.agregarACola(indice);
-        }
-        else if (opcion == 6)
+            miPlaylist.guardarColaEnArchivo(queueArchivo);
             miPlaylist.mostrarCola();
-        else if (opcion == 7)
+        }
+        else if (opcion == 6) {
+            miPlaylist.mostrarCola();
+        }
+        else if (opcion == 7) {
             miPlaylist.reproducirSiguiente();
+            miPlaylist.guardarColaEnArchivo(queueArchivo);
+            miPlaylist.mostrarCola();        
+        }
     } while (opcion != 0);
 
     return 0;

@@ -54,6 +54,16 @@ Este avance implementa la permanencia de datos, permitiendo que la playlist se c
 
 ---
 
+## Descripción del avance 4
+
+Este es un avance adicional en el que se corrigen algunos comentarios realizados por el profesor. La mayoría de los cambios están orientados a mejorar la facilidad de uso del código, como mostrar la playlist cada vez que se realice una acción relacionada con ella.
+
+Primero, se implementó un nuevo archivo .txt para manejar el registro de la cola de reproducción, de modo que, al igual que la playlist, se mantenga guardado entre ejecuciones del programa.
+
+Finalmente, con ayuda de la IA se implementó que, al reproducir la siguiente canción en la cola, se abra una URL que dirija automáticamente a la búsqueda de dicha canción en YouTube.
+
+---
+
 ## Instrucciones para compilar el avance de proyecto
 
 Ejecuta el siguiente comando en la terminal:   
@@ -116,9 +126,13 @@ El programa muestra mensajes en consola confirmando las acciones.
 ---
 ## Análisis de Complejidad
 
-n = número de canciones en el vector principal
-k = número de canciones en la Queue
+n = número de canciones en el vector principal  
+k = número de canciones en la Queue  
 m = número de líneas/canciones en el archivo
+
+### Complejidad Final del Programa
+
+#### O(n log n)
 
 ### Clase Cancion
 * "Cancion" (Constructor) - **O(1)**
@@ -203,6 +217,8 @@ m = número de líneas/canciones en el archivo
 
 Se ha realizado un análisis de complejidad O(n log n) para el algoritmo de ordenamiento **Merge Sort** implementado, como se detalla en la sección "Análisis de Complejidad".
 
+Al ser esta la complejidad mayor en el programa se define como la complejidad final del programa **O(n log n)**.
+
 **Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.**
 
 Se ha realizado un análisis detallado de la complejidad temporal para todas las estructuras de datos (Vector, Queue), sus métodos, y las operaciones del menú (incluyendo el manejo de archivos). Este análisis completo se encuentra en la sección "Análisis de Complejidad".
@@ -236,3 +252,5 @@ Se ha realizado un análisis detallado de la complejidad temporal para todas las
     4.  Extrae cada campo usando "getline(ss, campo, ',')".
     5.  Convierte los tipos de datos (string a int) de forma segura.
     6.  Carga los datos en el "std::vector" usando "push_back".
+    
+* (Avance 4) Igualmente se implementó un nuevo archivo .txt para manejar el registro de la cola de reproducción, de modo que, al igual que la playlist, se mantenga guardado entre ejecuciones del programa.

@@ -8,6 +8,7 @@
 #include "cancion.h"
 #include <fstream>
 #include <sstream>
+#include <cstdlib> // Libreria para mandar comandos al sistema operativo (implementacion extra)
 
 // Implementacion de metodos de clase Playlist
 
@@ -132,6 +133,26 @@ void Playlist::reproducirSiguiente() {
     Cancion actual = colaReproduccion.getFront();
     cout << "\nReproduciendo ahora: " << actual.getTitulo()
          << " - " << actual.getArtista() << endl;
+
+    // Implementacion extra (usando IA) para abrir youtube en la cancion que se reproduce en la cola
+  
+        // 1. Concatenamos Título y Artista para la búsqueda
+        string busqueda = actual.getTitulo() + " " + actual.getArtista();
+        
+        // 2. Reemplazamos los espacios por '+' para que sea una URL válida
+        for (int i = 0; i < busqueda.length(); i++) {
+            if (busqueda[i] == ' ') {
+                busqueda[i] = '+';
+            }
+        }
+
+        // 3. Preparamos el comando según el sistema operativo
+        string url = "https://www.youtube.com/results?search_query=" + busqueda;
+        string comando = "start " + url; 
+        
+        // 4. Ejecutamos el comando (convirtiendo string a const char*)
+        system(comando.c_str());
+         
     colaReproduccion.dequeue();
 }
 
@@ -201,4 +222,14 @@ void Playlist::guardarEnArchivo(const string& nombreArchivo) {
     // Cierra el archivo despues de escribir
     archivo.close();
     cout << "Cambios guardados en " << nombreArchivo << ".\n";
+}
+
+void Playlist::cargarColaDesdeArchivo(const string& nombreArchivo) {
+    colaReproduccion.cargarDesdeArchivo(nombreArchivo);
+    cout << "Cola de reproduccion cargada desde " << nombreArchivo << ".\n";
+}
+
+void Playlist::guardarColaEnArchivo(const string& nombreArchivo) {
+    colaReproduccion.guardarEnArchivo(nombreArchivo);
+    cout << "Cola guardada en " << nombreArchivo << endl;
 }

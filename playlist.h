@@ -37,6 +37,8 @@ public:
     // Metodos para manejo de archivos
     void cargarDesdeArchivo(const string& nombreArchivo);
     void guardarEnArchivo(const string& nombreArchivo);
+    void cargarColaDesdeArchivo(const string& nombreArchivo);
+    void guardarColaEnArchivo(const string& nombreArchivo);
 };
 
 #endif
